@@ -1,6 +1,8 @@
+#include "str.h"
 #include <stdio.h>
 
 int main(void) {
-  puts("hello world!");
+  str *name = str_new("Rudra");
+  print(name);
   return 0;
 }
