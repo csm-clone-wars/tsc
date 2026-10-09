@@ -1,5 +1,7 @@
 #include "str.h"
+#include <ctype.h>
 #include <stdbool.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -46,6 +48,11 @@ bool str_cmp(str *s1, str *s2) {
     return true;
   }
   return false;
+}
+void str_lower(str *s) {
+  for (size_t i = 0; i < s->len; i += 1) {
+    s->data[i] = (char)tolower((unsigned char)s->data[i]);
+  }
 }
 
 void print(str *s) { puts(s->data); }

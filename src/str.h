@@ -11,5 +11,6 @@ str *str_new(char *s);
 void str_free(str *s);
 
 bool str_cmp(str *s1, str *s2);
+void str_lower(str *s);
 
 void print(str *s);

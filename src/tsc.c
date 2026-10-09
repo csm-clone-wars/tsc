@@ -2,10 +2,9 @@
 #include <stdio.h>
 
 int main(void) {
-  str *name1 = str_new("Rudra");
-  str *name2 = str_new("");
+  str *name = str_new("Rudra");
 
-  if (str_cmp(name1, name2))
-    puts("yep they are equal!");
+  str_lower(name);
+  print(name);
   return 0;
 }
