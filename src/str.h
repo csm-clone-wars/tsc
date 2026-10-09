@@ -7,5 +7,6 @@ typedef struct {
 } str;
 
 str *str_new(char *s);
+void str_free(str *s);
 
 void print(str *s);

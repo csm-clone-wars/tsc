@@ -26,4 +26,18 @@ str *str_new(char *text) {
   return s;
 }
 
+void str_free(str *s) {
+  if (s == NULL) {
+    return;
+  }
+
+  if (s->data == NULL) {
+    free(s);
+    return;
+  }
+
+  free(s->data);
+  free(s);
+}
+
 void print(str *s) { puts(s->data); }
