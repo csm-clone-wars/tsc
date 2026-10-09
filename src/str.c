@@ -1,4 +1,5 @@
 #include "str.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,6 +39,13 @@ void str_free(str *s) {
 
   free(s->data);
   free(s);
+}
+
+bool str_cmp(str *s1, str *s2) {
+  if (strcmp(s1->data, s2->data) == 0) {
+    return true;
+  }
+  return false;
 }
 
 void print(str *s) { puts(s->data); }

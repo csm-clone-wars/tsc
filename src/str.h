@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stddef.h>
 
 typedef struct {
@@ -8,5 +9,7 @@ typedef struct {
 
 str *str_new(char *s);
 void str_free(str *s);
+
+bool str_cmp(str *s1, str *s2);
 
 void print(str *s);
