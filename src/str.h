@@ -9,7 +9,7 @@ typedef struct {
   size_t len;
 } str;
 
-str *str_new(char *s);
+str *str_new(char *text);
 void str_free(str *s);
 
 bool str_cmp(str *s1, str *s2);

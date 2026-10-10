@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 int main(int argc, char **argv) {
+  // command-line arguments: convert 'argv' into list of 'str'
   list *args = list_new(STR);
   for (int i = 0; i < argc; i += 1) {
     list_append(args, str_new(argv[i]));
