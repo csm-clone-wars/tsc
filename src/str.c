@@ -55,4 +55,13 @@ void str_lower(str *s) {
   }
 }
 
+str *str_copy(str *s) {
+  if (s == NULL) {
+    printf("internal error: str copy failed!");
+    exit(1);
+  }
+  str *copy = str_new(s->data);
+  return copy;
+}
+
 void print(str *s) { puts(s->data); }

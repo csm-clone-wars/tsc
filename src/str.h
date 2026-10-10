@@ -14,5 +14,6 @@ void str_free(str *s);
 
 bool str_cmp(str *s1, str *s2);
 void str_lower(str *s);
+str *str_copy(str *s);
 
 void print(str *s);
