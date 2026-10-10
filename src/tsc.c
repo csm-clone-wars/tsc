@@ -1,10 +1,10 @@
+#include "list.h"
 #include "str.h"
 #include <stdio.h>
 
 int main(void) {
-  str *name = str_new("Rudra");
+  list *args = list_new(STR);
 
-  str_lower(name);
-  print(name);
+  printf("%zu\n", args->len);
   return 0;
 }
