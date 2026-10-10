@@ -39,22 +39,27 @@ void list_free(list *l) {
   free(l);
 }
 
-// void list_append(list *l, void *value) {
-//   if (l == NULL || value == NULL) {
-//     puts("internal error: dynamic list append failed!");
-//     exit(1);
-//   }
+void list_append(list *l, void *value) {
+  if (l == NULL || value == NULL) {
+    puts("internal error: list append failed!");
+    exit(1);
+  }
 
-//   ListItem item;
-//   if (l->type == STR) {
-//     item.s = (str *)value;
-//   }
+  ListItem item = {NULL};
+  if (l->type == STR) {
+    item.s = (str *)value;
+  }
 
-//   l->len += 1;
-//   if (l->cap < l->len) {
-//     l->cap = l->len * 2;
-//   }
-//   l->items = realloc(l->items, l->cap * sizeof(ListItem));
-//   if (l->items == NULL) {
-//   }
-// }
+  l->len += 1;
+  if (l->cap < l->len) {
+    l->cap = l->len * 2;
+  }
+  l->items = realloc(l->items, l->cap * sizeof(ListItem));
+  if (l->items == NULL) {
+    list_free(l);
+    puts("internal error: list append failed!");
+    exit(1);
+  }
+
+  l->items[l->len - 1] = item;
+}
