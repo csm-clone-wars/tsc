@@ -5,6 +5,10 @@
 int main(void) {
   list *args = list_new(STR);
 
-  printf("%zu\n", args->len);
+  list_free(args);
+  args = NULL;
+  if (args == NULL) {
+    printf("freed\n");
+  }
   return 0;
 }

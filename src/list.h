@@ -16,3 +16,5 @@ typedef struct {
 } list;
 
 list *list_new(ListType type);
+void list_free(list *l);
+void list_append(list *l, void *value);
