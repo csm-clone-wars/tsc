@@ -1,9 +1,19 @@
 # tsc
 
+## Status
+Nothing yet!
 
-## Some basic rules followed ragarding dynamic memory
-- Free the data structure using its appropriate free function right after you are done with it.
-- Set the variable to `NULL` right after free, to avoid double-free error.
+
+## Building the Project
+- clone the repo
+- cd into the cloned repo
+- run:
+```
+make
+```
+- the output `tsc` binary will be inside `build/` folder
+
+
 
 ## License
 Apache 2.0

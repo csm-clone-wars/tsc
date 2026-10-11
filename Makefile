@@ -1,13 +1,16 @@
-CC = gcc
-CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -Werror -O2 -static
-SRC = $(wildcard src/*.c)
-TARGET = ./tsc
+CXX = g++
+CXXFLAGS = -std=c++17 -O2 -Wall -Wextra -Wpedantic -Werror -Iinclude
+
+SRC = $(wildcard src/*.cpp)
+TARGET = build/tsc
+
+.PHONY: all clean
+
+all: $(TARGET)
 
 $(TARGET): $(SRC)
 	mkdir -p build
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
 
 clean:
-	rm -f $(TARGET)
-
-.PHONY: clean
+	rm -rf build
