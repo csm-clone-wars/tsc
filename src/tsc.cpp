@@ -1,3 +1,4 @@
+#include "cli_arg_parser.hpp"
 #include "utils.hpp"
 #include <cstdlib>
 #include <iostream>
@@ -16,6 +17,8 @@ int main(int argc, char **argv) {
     print("Build command not implemented yet!");
     exit(1);
   }
+
+  parse(args);
 
   return 0;
 }
