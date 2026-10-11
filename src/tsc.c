@@ -1,3 +1,4 @@
+#include "arg_parser.h"
 #include "list.h"
 #include "str.h"
 #include <stdbool.h>
@@ -20,6 +21,8 @@ int main(int argc, char **argv) {
     puts("Build command is not implemented yet!");
     exit(1);
   }
+
+  parse(args);
 
   list_free(args);
   return 0;
