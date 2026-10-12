@@ -1,12 +1,15 @@
 #include "cli_arg_parser.hpp"
-#include "diagnostics.hpp"
 #include <iostream>
-#include <string>
-#include <vector>
 
-void parse(std::vector<std::string> &args) {
-  // std::vector<std::string> filenames;
+std::tuple<std::vector<Diagnostic>, std::vector<std::string>,
+           std::unordered_map<std::string, std::string>,
+           std::unordered_map<std::string, std::string>>
+parse(std::vector<std::string> &args) {
+  std::vector<std::string> filenames;
+  std::vector<Diagnostic> errors;
+  std::unordered_map<std::string, std::string> options;
+  std::unordered_map<std::string, std::string> watch_options;
+
   std::cout << "args size: " << args.size() << "\n";
-  auto error = create_diagnostic(5083, {"hello.txt"});
-  error.print();
+  return {errors, filenames, options, watch_options};
 }

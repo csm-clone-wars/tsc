@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 
-// string related
+// strings
 std::string to_lower(std::string s) {
   std::transform(s.begin(), s.end(), s.begin(),
                  [](unsigned char c) { return std::tolower(c); });
@@ -10,7 +10,7 @@ std::string to_lower(std::string s) {
 }
 void print(const std::string &s) { std::cout << s << "\n"; }
 
-// environment variables related
+// environment variables
 bool env_var_exists(const std::string &name) {
   if (std::getenv(name.c_str()) != nullptr) {
     return true;

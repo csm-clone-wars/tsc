@@ -3,9 +3,9 @@
 #include <cctype>
 #include <string>
 
-// string related
+// strings
 std::string to_lower(std::string s);
 void print(const std::string &s);
 
-// environment variables related
+// environment variables
 bool env_var_exists(const std::string &name);

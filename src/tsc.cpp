@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
     exit(1);
   }
 
-  parse(args);
+  auto [errors, filenames, options, watch_options] = parse(args);
 
   return 0;
 }
