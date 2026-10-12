@@ -1,6 +1,10 @@
 #include "utils.hpp"
+#include "diagnostics.hpp"
 #include <cstdlib>
+#include <fstream>
 #include <iostream>
+#include <sstream>
+#include <string>
 
 // strings
 std::string to_lower(std::string s) {
@@ -16,4 +20,22 @@ bool env_var_exists(const std::string &name) {
     return true;
   }
   return false;
+}
+
+// file io
+std::pair<Diagnostic, std::string> read_file(const std::string &filename) {
+  auto error = Diagnostic{};
+  std::string content = "";
+  std::ifstream file(filename);
+
+  if (!file) {
+    error = create_diagnostic(5083, {filename});
+    return {error, content};
+  }
+
+  std::stringstream buffer;
+  buffer << file.rdbuf();
+  content = buffer.str();
+
+  return {error, content};
 }
