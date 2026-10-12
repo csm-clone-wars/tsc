@@ -1,4 +1,5 @@
 #include "cli_arg_parser.hpp"
+#include "response_file_parser.hpp"
 #include "utils.hpp"
 #include <iostream>
 
@@ -11,12 +12,16 @@ parse(std::vector<std::string> &args) {
   std::unordered_map<std::string, std::string> options;
   std::unordered_map<std::string, std::string> watch_options;
 
-  std::cout << "args size: " << args.size() << "\n";
-  auto [error, content] = read_file("hello.txt");
-  if (error.message != "") {
-    error.print();
+  std::cout << "args size: " << args.size() << "\n\n";
+
+  auto [response_error, new_args] = parse_response_file("hello.txt");
+  if (response_error.message != "") {
+    response_error.print();
   } else {
-    print(content);
+    for (auto arg : new_args) {
+      print(arg);
+    }
   }
+
   return {errors, filenames, options, watch_options};
 }
