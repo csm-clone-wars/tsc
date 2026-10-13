@@ -19,6 +19,11 @@ int main(int argc, char **argv) {
   }
 
   auto [errors, filenames, options, watch_options] = parse(args);
+  if (!errors.empty()) {
+    for (auto error : errors) {
+      error.print();
+    }
+  }
 
   return 0;
 }

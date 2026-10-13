@@ -12,17 +12,23 @@ parse(std::vector<std::string> &args) {
   std::unordered_map<std::string, std::string> options;
   std::unordered_map<std::string, std::string> watch_options;
 
-  std::cout << "args size: " << args.size() << "\n\n";
   auto response_file_errors = expand_response_files(args);
+  auto circular_reference_error = false;
   if (!response_file_errors.empty()) {
     for (auto err : response_file_errors) {
-      err.print();
-    }
-  } else {
-    for (auto arg : args) {
-      print(arg);
+      if (err.code == 100000) {
+        circular_reference_error = true;
+        break;
+      }
     }
   }
+  errors.insert(errors.end(), response_file_errors.begin(),
+                response_file_errors.end());
+  if (circular_reference_error) {
+    return {errors, filenames, options, watch_options};
+  }
+
+  print("hello!");
 
   return {errors, filenames, options, watch_options};
 }
