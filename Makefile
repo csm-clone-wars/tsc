@@ -1,7 +1,7 @@
 
 CXX = g++
 
-CXXFLAGS = -std=c++17 -O2 -Wall -Wextra -Wpedantic -Werror -Iinclude -MMD -MP
+CXXFLAGS = -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -Iinclude -MMD -MP
 
 SRC = $(wildcard src/*.cpp)
 OBJ = $(patsubst src/%.cpp,build/obj/%.o,$(SRC))

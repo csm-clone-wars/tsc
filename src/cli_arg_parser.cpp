@@ -13,12 +13,13 @@ parse(std::vector<std::string> &args) {
   std::unordered_map<std::string, std::string> watch_options;
 
   std::cout << "args size: " << args.size() << "\n\n";
-
-  auto [response_error, new_args] = parse_response_file("hello.txt");
-  if (response_error.message != "") {
-    response_error.print();
+  auto response_file_errors = expand_response_files(args);
+  if (!response_file_errors.empty()) {
+    for (auto err : response_file_errors) {
+      err.print();
+    }
   } else {
-    for (auto arg : new_args) {
+    for (auto arg : args) {
       print(arg);
     }
   }

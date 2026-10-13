@@ -5,6 +5,41 @@
 #include <string>
 #include <vector>
 
+std::vector<Diagnostic> expand_response_files(std::vector<std::string> &args) {
+  std::vector<Diagnostic> errors = {};
+
+  size_t files_count = 0;
+
+  size_t x = 0;
+  while (x < args.size()) {
+    if (args[x].starts_with("@")) {
+      files_count += 1;
+      auto filename = args[x].substr(1);
+      if (files_count > 200) {
+        // circular reference error in response file
+        auto error = create_diagnostic(100000, {filename});
+        errors.push_back(error);
+        args.erase(args.begin() + x);
+        return errors;
+      }
+
+      auto [parse_error, temp_args] = parse_response_file(filename);
+      if (parse_error.message != "") {
+        errors.push_back(parse_error);
+        args.erase(args.begin() + x);
+        continue;
+      } else {
+        args.erase(args.begin() + x);
+        args.insert(args.begin() + x, temp_args.begin(), temp_args.end());
+        continue;
+      }
+    }
+    x += 1;
+  }
+
+  return errors;
+}
+
 std::pair<Diagnostic, std::vector<std::string>>
 parse_response_file(const std::string &filename) {
   auto parse_error = Diagnostic{};

@@ -1,4 +1,4 @@
 
 -clean
-"-v"
+"@hi.txt"
 -b
