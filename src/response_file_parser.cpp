@@ -5,7 +5,8 @@
 #include <string>
 #include <vector>
 
-std::vector<Diagnostic> expand_response_files(std::vector<std::string> &args) {
+auto expand_response_files(std::vector<std::string> &args)
+    -> std::vector<Diagnostic> {
   std::vector<Diagnostic> errors = {};
 
   size_t files_count = 0;
@@ -40,8 +41,8 @@ std::vector<Diagnostic> expand_response_files(std::vector<std::string> &args) {
   return errors;
 }
 
-std::pair<Diagnostic, std::vector<std::string>>
-parse_response_file(const std::string &filename) {
+auto parse_response_file(const std::string &filename)
+    -> std::pair<Diagnostic, std::vector<std::string>> {
   auto parse_error = Diagnostic{};
   std::vector<std::string> args;
 

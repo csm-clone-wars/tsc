@@ -10,7 +10,8 @@ std::string to_lower(std::string s);
 void print(const std::string &s);
 
 // environment variables
-bool env_var_exists(const std::string &name);
+auto env_var_exists(const std::string &name) -> bool;
 
 // file io
-std::pair<Diagnostic, std::string> read_file(const std::string &filename);
+auto read_file(const std::string &filename)
+    -> std::pair<Diagnostic, std::string>;

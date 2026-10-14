@@ -5,9 +5,9 @@
 #include <string>
 #include <vector>
 
-bool is_build_command(std::string s);
+auto is_build_command(std::string s) -> bool;
 
-int main(int argc, char **argv) {
+auto main(int argc, char **argv) -> int {
   std::vector<std::string> args;
   for (int i = 1; i < argc; i += 1) {
     args.push_back(argv[i]);
@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
   return 0;
 }
 
-bool is_build_command(std::string s) {
+auto is_build_command(std::string s) -> bool {
   auto name = to_lower(s);
   auto flags = {"-build", "--build", "-b", "--b"};
   for (auto &flag : flags) {

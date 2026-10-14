@@ -3,7 +3,8 @@
 #include <utility>
 #include <vector>
 
-std::vector<Diagnostic> expand_response_files(std::vector<std::string> &args);
+auto expand_response_files(std::vector<std::string> &args)
+    -> std::vector<Diagnostic>;
 
-std::pair<Diagnostic, std::vector<std::string>>
-parse_response_file(const std::string &filename);
+auto parse_response_file(const std::string &filename)
+    -> std::pair<Diagnostic, std::vector<std::string>>;

@@ -4,15 +4,16 @@
 #include <cstddef>
 #include <iostream>
 
-std::tuple<std::vector<Diagnostic>, std::vector<std::string>,
-           std::unordered_map<std::string, std::string>,
-           std::unordered_map<std::string, std::string>>
-parse(std::vector<std::string> &args) {
+auto parse(std::vector<std::string> &args)
+    -> std::tuple<std::vector<Diagnostic>, std::vector<std::string>,
+                  std::unordered_map<std::string, std::string>,
+                  std::unordered_map<std::string, std::string>> {
   std::vector<std::string> filenames;
   std::vector<Diagnostic> errors;
   std::unordered_map<std::string, std::string> options;
   std::unordered_map<std::string, std::string> watch_options;
 
+  // response files expansion
   auto response_file_errors = expand_response_files(args);
   auto circular_reference_error = false;
   if (!response_file_errors.empty()) {
@@ -29,6 +30,7 @@ parse(std::vector<std::string> &args) {
     return {errors, filenames, options, watch_options};
   }
 
+  // (flags,values) and filenames parsing
   size_t x = 0;
   while (x < args.size()) {
     if (args[x].starts_with("-")) {

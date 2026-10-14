@@ -20,7 +20,7 @@ const std::vector<Diagnostic> DIAGNOSTICS = {
                "Bhai, teri file khulte-khulte toh main budha ho jaunga. 😂"},
 };
 
-Diagnostic create_diagnostic(int code, std::vector<std::string> args) {
+auto create_diagnostic(int code, std::vector<std::string> args) -> Diagnostic {
   for (auto d : DIAGNOSTICS) {
     if (d.code == code) {
       auto msg = d.message;

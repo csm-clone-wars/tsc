@@ -7,15 +7,15 @@
 #include <string>
 
 // strings
-std::string to_lower(std::string s) {
+auto to_lower(std::string s) -> std::string {
   std::transform(s.begin(), s.end(), s.begin(),
                  [](unsigned char c) { return std::tolower(c); });
   return s;
 }
-void print(const std::string &s) { std::cout << s << "\n"; }
+auto print(const std::string &s) -> void { std::cout << s << "\n"; }
 
 // environment variables
-bool env_var_exists(const std::string &name) {
+auto env_var_exists(const std::string &name) -> bool {
   if (std::getenv(name.c_str()) != nullptr) {
     return true;
   }
@@ -23,7 +23,8 @@ bool env_var_exists(const std::string &name) {
 }
 
 // file io
-std::pair<Diagnostic, std::string> read_file(const std::string &filename) {
+auto read_file(const std::string &filename)
+    -> std::pair<Diagnostic, std::string> {
   auto error = Diagnostic{};
   std::string content = "";
   std::ifstream file(filename);

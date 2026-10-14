@@ -12,7 +12,7 @@ struct Diagnostic {
   std::string category;
   std::string comment;
 
-  void print() {
+  auto print() -> void {
     if (message == "") {
       return;
     }
@@ -25,4 +25,4 @@ struct Diagnostic {
 
 extern const std::vector<Diagnostic> DIAGNOSTICS;
 
-Diagnostic create_diagnostic(int code, std::vector<std::string> args);
+auto create_diagnostic(int code, std::vector<std::string> args) -> Diagnostic;
