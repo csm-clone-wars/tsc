@@ -1,6 +1,7 @@
 #include "cli_arg_parser.hpp"
 #include "response_file_parser.hpp"
 #include "utils.hpp"
+#include <cstddef>
 #include <iostream>
 
 std::tuple<std::vector<Diagnostic>, std::vector<std::string>,
@@ -28,7 +29,14 @@ parse(std::vector<std::string> &args) {
     return {errors, filenames, options, watch_options};
   }
 
-  print("hello!");
+  size_t x = 0;
+  while (x < args.size()) {
+    if (args[x].starts_with("-")) {
+    } else {
+      filenames.push_back(args[x]);
+    }
+    x += 1;
+  }
 
   return {errors, filenames, options, watch_options};
 }

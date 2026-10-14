@@ -23,6 +23,10 @@ int main(int argc, char **argv) {
     for (auto error : errors) {
       error.print();
     }
+  } else {
+    for (auto file : filenames) {
+      print(file);
+    }
   }
 
   return 0;
