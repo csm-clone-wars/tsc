@@ -30,7 +30,7 @@ auto parse(std::vector<std::string> &args)
     return {errors, filenames, options, watch_options};
   }
 
-  // (flags,values) and filenames parsing
+  // parsing (flags,values) and filenames
   size_t x = 0;
   while (x < args.size()) {
     if (args[x].starts_with("-")) {
