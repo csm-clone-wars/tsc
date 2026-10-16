@@ -1,7 +1,7 @@
 #include "compiler_options.hpp"
 #include <unordered_map>
 
-const std::vector<CompilerOption> watch_related_options = {
+const std::vector<CompilerOption> compiler_options = {
     CompilerOption{
         .name = "watchFile",
         .short_name = "",
@@ -14,6 +14,7 @@ const std::vector<CompilerOption> watch_related_options = {
         .meta_info = {{"category", "Watch_and_Build_Modes"},
                       {"description",
                        "Specify_how_the_TypeScript_watch_mode_works"}},
+        .option_type = {"watch"},
 
     },
     CompilerOption{
@@ -28,6 +29,8 @@ const std::vector<CompilerOption> watch_related_options = {
                       {"description",
                        "Specify_how_directories_are_watched_on_systems_that_"
                        "lack_recursive_file_watching_functionality"}},
+        .option_type = {"watch"},
+
     },
     CompilerOption{
         .name = "fallbackPolling",
@@ -41,6 +44,8 @@ const std::vector<CompilerOption> watch_related_options = {
                       {"Specify_what_approach_the_watcher_should_use_if_the_"
                        "system_runs_out_of_native_file_watchers",
                        "PriorityInterval"}},
+        .option_type = {"watch"},
+
     },
     CompilerOption{
         .name = "synchronousWatchDirectory",
@@ -54,6 +59,8 @@ const std::vector<CompilerOption> watch_related_options = {
                        "Synchronously_call_callbacks_and_update_the_state_of_"
                        "directory_watchers_on_platforms_that_don_t_support_"
                        "recursive_watching_natively"}},
+        .option_type = {"watch"},
+
     },
     CompilerOption{
         .name = "excludeDirectories",
@@ -68,6 +75,8 @@ const std::vector<CompilerOption> watch_related_options = {
                       {"category", "Watch_and_Build_Modes"},
                       {"description",
                        "Remove_a_list_of_directories_from_the_watch_process"}},
+        .option_type = {"watch"},
+
     },
     CompilerOption{
         .name = "excludeFiles",
@@ -83,6 +92,7 @@ const std::vector<CompilerOption> watch_related_options = {
              {"category", "Watch_and_Build_Modes"},
              {"description",
               "Remove_a_list_of_files_from_the_watch_mode_s_processing"}},
+        .option_type = {"watch"},
     },
 
 };

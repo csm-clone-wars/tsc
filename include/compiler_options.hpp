@@ -11,9 +11,7 @@ struct CompilerOption {
   std::vector<std::string>
       default_values; // one or more depends on the value_type
   std::unordered_map<std::string, std::string> meta_info;
+  std::vector<std::string> option_type; // build,watch,command-line,compile
 };
 
-extern const std::vector<CompilerOption> normal_options;
-extern const std::vector<CompilerOption> compile_related_options;
-extern const std::vector<CompilerOption> build_related_options;
-extern const std::vector<CompilerOption> watch_related_options;
+extern const std::vector<CompilerOption> compiler_options;
